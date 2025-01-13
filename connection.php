@@ -5,11 +5,9 @@ $password = '';
 $database = 'workouts';
 
 // Create a connection
-$mysqli = new mysqli($host, $username, $password, $database);
+$conn = new mysqli($host, $username, $password, $database);
 
 // Check connection
-if ($mysqli->connect_error) {
+if ($conn->connect_error) {
   die('Connection failed: ' . $mysqli->connect_error);
 }
-
-echo 'Connected successfully!';
