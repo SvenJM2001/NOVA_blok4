@@ -18,11 +18,20 @@ $land = $_POST['land'];
 $telefoonnummer = $_POST['telefoonnummer'];
 $mobielnummer = $_POST['mobielnummer'];
 
-$klantnummer = $_POST['klantnummer'];
-$laatste_login_datum = $_POST['laatste_login_datum'];
+// Prepare variables for optional inserts
+$klantnummer = null;
+$laatste_login_datum = null;
+$begin_datum = null;
+$baan_titel = null;
 
-$begin_datum = $_POST['start_datum'];
-$baan_titel = $_POST['werk_titel'];
+// Handle role-specific data
+if ($rol === 'klant') {
+    $klantnummer = substr(bin2hex(random_bytes(4)), 0, 8);
+    $laatste_login_datum = date('Y-m-d H:i:s');
+} elseif ($rol === 'werknemer') {
+    $begin_datum = date('Y-m-d H:i:s');
+    $baan_titel = $_POST['werk_titel'];
+}
 
 // Insert into `users` table
 $sql_users = "INSERT INTO users (voornaam, achternaam, geslacht, email, gebruikersnaam, wachtwoord, rol)
@@ -37,15 +46,15 @@ $sql_adres = "INSERT INTO adres (user_id, straat, huisnummer, postcode, plaats, 
 VALUES ('$user_id', '$straat', '$huisnummer', '$postcode', '$plaats', '$land', '$telefoonnummer', '$mobielnummer')";
 $conn->query($sql_adres);
 
-// Insert into `klanten` table (if applicable)
-if (!empty($klantnummer)) {
+// Insert into `klanten` table if the role is "klant"
+if ($rol === 'klant') {
     $sql_klanten = "INSERT INTO klanten (user_id, klantnummer, Laatste_login_datum)
     VALUES ('$user_id', '$klantnummer', '$laatste_login_datum')";
     $conn->query($sql_klanten);
 }
 
-// Insert into `werknemers` table (if applicable)
-if (!empty($begin_datum) || !empty($baan_titel)) {
+// Insert into `werknemers` table if the role is "werknemer"
+if ($rol === 'werknemer') {
     $sql_werknemers = "INSERT INTO werknemers (user_id, start_datum, werk_titel)
     VALUES ('$user_id', '$begin_datum', '$baan_titel')";
     $conn->query($sql_werknemers);
@@ -53,6 +62,6 @@ if (!empty($begin_datum) || !empty($baan_titel)) {
 
 $conn->close();
 
+// Redirect to the index page
 header("Location: index.php");
 exit();
-?>
