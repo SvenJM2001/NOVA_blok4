@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding-top: 0;
+}
+
+header {
+    padding: 0 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: linear-gradient(to bottom right, rgb(0, 109, 199), rgb(183, 202, 218));
+    height: 20em;
+}  
+
+header.with_image {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url(./Images/workout-partner-800x476.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 20em;
+}
+
+h1 {
+    color: white;
+}
+span {
+    color: rgb(0, 109, 199);
+}
+nav {
+    position: sticky;
+    background-color: rgb(250, 236, 219);
+}
+ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+}
+li {
+    margin-right: 2em;
+}
+
+a {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+main {
+    margin: 1em;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+.inloggen{
+    height: 25em;
+    width: 25em;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    border: 0.1em solid black;
+}
+
+.login_box {
+    margin-bottom: 0.5em;
+    height: 5em;
+    width: 21em;
+    font-size: large;
+    padding-left: 0.5em;
+}
+
+.login_button {
+    height: 3em;
+    width: 20em;
+    margin: 0.5em 4em;
+    font-size: large;
+}
+
+p {
+    width: 23em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.register {
+    color: rgb(0, 109, 199);
+}
+
+.terug_knop {
+    width: 5em;
+    height: 2em;
+}

@@ -19,11 +19,12 @@
 </head>
 <body>
     <header>
+        <H1>Work<span>4</span>Me</H1>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="workouts.php">Workouts</a></li>
-                <li><a href="data.php">Data</a></li>
+                <li><a class="nav" href="index.php">Home</a></li>
+                <li><a class="nav" href="workouts.php">Workouts</a></li>
+                <li><a class="nav" href="data.php">Data</a></li>
             </ul>
         </nav>
     </header>

@@ -12,14 +12,16 @@ include "connection.php"
 </head>
 <body>
     <header>
+        <H1>Work<span>4</span>Me</H1>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="#">Workouts</a></li>
-                <li><a href="data.php">Data</a></li>
-                <li><a class = "register" href="register.php">Registreren</a></li>
+                <li><a class="nav" href="index.php">Home</a></li>
+                <li><a class="nav" href="#">Workouts</a></li>
+                <li><a class="nav" href="data.php">Data</a></li>
+                <li><a  href="login.php">Inloggen</a></li>
             </ul>
         </nav>
     </header>
+    
 </body>
 </html>
