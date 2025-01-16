@@ -14,7 +14,6 @@ include "connection.php"
     <header>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
                 <li><a href="workouts.php">Workouts</a></li>
                 <li><a href="data.php">Data</a></li>
                 <li><a class = "register" href="register.php">Registreren</a></li>

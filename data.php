@@ -12,7 +12,6 @@
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="workouts.php">Workouts</a></li>
-                <li><a href="#">Data</a></li>
                 <li><a class="register" href="register.php">Registreren</a></li>
             </ul>
         </nav>
@@ -53,8 +52,8 @@
                                     <td>
                                         <?= htmlspecialchars($row['straat'] . ' ' . $row['huisnummer'] . ', ' . $row['postcode'] . ', ' . $row['plaats'] . ', ' . $row['land']) ?>
                                     </td>
-                                    <td><?= htmlspecialchars($row['telefoonnummer'] ?? 'N/A') ?></td>
-                                    <td><?= htmlspecialchars($row['mobielnummer'] ?? 'N/A') ?></td>
+                                    <td><?= htmlspecialchars($row['telefoonnummer']) ?></td>
+                                    <td><?= htmlspecialchars($row['mobielnummer']) ?></td>
                                     <td><?= htmlspecialchars($row['klantnummer'] ?? 'N/A') ?></td>
                                     <td><?= htmlspecialchars($row['Laatste_login_datum'] ?? 'N/A') ?></td>
                                     <td><?= htmlspecialchars($row['start_datum'] ?? 'N/A') ?></td>
