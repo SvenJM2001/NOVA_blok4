@@ -16,6 +16,7 @@ include "connection.php"
             <ul>
                 <li><a href="workouts.php">Workouts</a></li>
                 <li><a href="data.php">Data</a></li>
+                hey
                 <li><a class = "register" href="register.php">Registreren</a></li>
             </ul>
         </nav>
