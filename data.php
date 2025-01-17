@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work4Me_Data</title>
-    <link rel="stylesheet" href="data.css">
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" type="text/javascript"></script>
 </head>
 <body>
     <header>
-        <H1>Work<span>4</span>Me</H1>
+        <div><H1>Work<span>4</span>Me</H1></div>
         <nav>
             <ul>
                 <li><a class="nav" href="index.php">Home</a></li>
@@ -67,6 +68,18 @@
                 <?php else: ?>
                     <p>No results found.</p>
                 <?php endif; ?>
+            </div>
+        </section>
+        <section>
+            <div class="user_login_data">
+                <canvas id="loginDataChart" style="width:100%; max-width:700px"></canvas>
+                <script>
+                    const loginDataChart = new Chart("loginDataChart", {
+                        type: "bar",
+                        data: {},
+                        options: {}
+                    });
+                </script>
             </div>
         </section>
     </main>

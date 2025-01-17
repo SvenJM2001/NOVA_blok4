@@ -4,12 +4,24 @@ body {
 }
 
 header {
-    padding: 0 2em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: linear-gradient(to bottom right, rgb(0, 109, 199), rgb(183, 202, 218));
-    height: 20em;
+    background-image: linear-gradient(to bottom right, rgb(162, 200, 231), rgb(0, 109, 199));
+    height: fit-content;
+}  
+
+header.fixed {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: linear-gradient(to bottom right, rgb(162, 200, 231), rgb(0, 109, 199));
+    height: fit-content;
+    position: fixed;
+    height: 50%;
+    width: 100%;
+    top: 0;
+    z-index: 1;
 }  
 
 header.with_image {
@@ -23,12 +35,33 @@ header.with_image {
     height: 20em;
 }
 
-h1 {
+header div {
+    display: flex;
+    align-items: center;
+}
+
+.pagina_titel {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5em;
+}
+
+/* website titel */
+header div h1 {
+    margin-left: 1em;
     color: white;
 }
 span {
     color: rgb(0, 109, 199);
 }
+
+header div h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2em;
+    margin: 0;
+}
+
+/* navigatie balk */
 nav {
     position: sticky;
     background-color: rgb(250, 236, 219);
@@ -41,7 +74,6 @@ ul {
 li {
     margin-right: 2em;
 }
-
 a {
     font-family: Arial, Helvetica, sans-serif;
     color: black;
@@ -59,45 +91,161 @@ main {
 section {
     display: flex;
     justify-content: center;
+    
 }
 
+/* login scherm opmaak*/
 .inloggen{
-    height: 25em;
+    height: 20em;
     width: 25em;
     padding: 1em;
+    margin-top: 10em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    border: 0.1em solid black;
+    z-index: 11;
+    background-color: white;
 }
-
 .login_box {
     margin-bottom: 0.5em;
     height: 5em;
-    width: 21em;
+    width: 22em;
     font-size: large;
     padding-left: 0.5em;
+    border-style: none;
+    background-color: rgb(240, 240, 240);
 }
-
 .login_button {
     height: 3em;
-    width: 20em;
-    margin: 0.5em 4em;
+    width: 15em;
+    margin: 0.5em 3em;
     font-size: large;
 }
-
 p {
+    margin-top: 0;
     width: 23em;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
-
 .register {
     color: rgb(0, 109, 199);
 }
-
 .terug_knop {
     width: 5em;
     height: 2em;
+}
+
+/* opmaak van de register pagina (zonder header)*/
+form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+form input {
+    height: 3em;
+    width: 15em;
+    margin: 0.5em;
+}
+
+.user_info label {
+    margin-left: 5em;
+}
+
+#email {
+    width: 31.6em;
+}
+
+#geslacht {
+    margin-right: 6.5em;
+    margin-left: 0.5em;
+    height: 2em;
+}
+
+#rol {
+    margin-left: 0.5em;
+    height: 2em;
+}
+
+#land {
+    margin-right: 15em;
+}
+
+#telefoonnummer {
+    margin-top: 2em;
+}
+
+#mobielnummer {
+    margin-top: 2em;
+    height: 3em;
+}
+
+.user_info {
+    display: flex;
+    flex-direction: column;
+    height: 22em;
+    
+}
+
+.adress_info {
+    display: none;
+    flex-direction: column;
+    height: 22em;
+}
+
+.user_form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.user_form div {
+    margin: 0.5em;
+    width: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;    
+}
+
+.adress_form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 50%;
+    margin: 0 25%;
+}
+.register_submit {
+    display: none;
+    width: 15em;
+    height: 2em;
+    font-size: large;
+}
+.back {
+    display: none;
+    margin-top: 3em;
+}
+
+/* data opmaak */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+thead {
+    background-color: #f2f2f2;
+}
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
 }

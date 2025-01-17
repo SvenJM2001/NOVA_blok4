@@ -12,7 +12,7 @@ include "connection.php"
 </head>
 <body>
     <header class="with_image">
-        <H1>Work<span>4</span>Me</H1>
+        <div><H1>Work<span>4</span>Me</H1></div>
         <nav>
             <ul>
                 <li><a class="nav" href="#">Home</a></li>
