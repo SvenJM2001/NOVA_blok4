@@ -8,7 +8,7 @@
     <script>
         function toggleEmployeeInfo() {
             const roleSelect = document.getElementById("rol");
-            const employeeInfo = document.getElementById("employee-info");
+            const employeeInfo = document.getElementById("Werknemer-info");
             if (roleSelect.value === "werknemer") {
                 employeeInfo.style.display = "block";
             } else {
@@ -86,7 +86,7 @@
             
 
             <!-- Employee Information -->
-            <div id="employee-info" style="display: none;">
+            <div id="Werknemer-info" style="display: none;">
                 <h2>Werknemer informatie</h2>
                 <label for="werk_titel">Werk titel:</label>
                 <input type="text" id="werk_titel" name="werk_titel"><br>

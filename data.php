@@ -12,10 +12,16 @@
         <div><H1>Work<span>4</span>Me</H1></div>
         <nav>
             <ul>
+<<<<<<< HEAD
                 <li><a class="nav" href="index.php">Home</a></li>
                 <li><a class="nav" href="workouts.php">Workouts</a></li>
                 <li><a class="nav" href="#">Data</a></li>
                 <li><a href="login.php">Inloggen</a></li>
+=======
+                <li><a href="index.php">Home</a></li>
+                <li><a href="workouts.php">Workouts</a></li>
+                <li><a class="register" href="register.php">Registreren</a></li>
+>>>>>>> 1986c182e03e349365b86a236a70bea96c3f272f
             </ul>
         </nav>
     </header>
@@ -55,8 +61,8 @@
                                     <td>
                                         <?= htmlspecialchars($row['straat'] . ' ' . $row['huisnummer'] . ', ' . $row['postcode'] . ', ' . $row['plaats'] . ', ' . $row['land']) ?>
                                     </td>
-                                    <td><?= htmlspecialchars($row['telefoonnummer'] ?? 'N/A') ?></td>
-                                    <td><?= htmlspecialchars($row['mobielnummer'] ?? 'N/A') ?></td>
+                                    <td><?= htmlspecialchars($row['telefoonnummer']) ?></td>
+                                    <td><?= htmlspecialchars($row['mobielnummer']) ?></td>
                                     <td><?= htmlspecialchars($row['klantnummer'] ?? 'N/A') ?></td>
                                     <td><?= htmlspecialchars($row['Laatste_login_datum'] ?? 'N/A') ?></td>
                                     <td><?= htmlspecialchars($row['start_datum'] ?? 'N/A') ?></td>
