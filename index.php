@@ -11,15 +11,19 @@ include "connection.php"
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-    <header>
+    <header class="with_image">
+        <div><H1>Work<span>4</span>Me</H1></div>
         <nav>
             <ul>
-                <li><a href="workouts.php">Workouts</a></li>
-                <li><a href="data.php">Data</a></li>
-                hey
-                <li><a class = "register" href="register.php">Registreren</a></li>
+                <li><a class="nav" href="#">Home</a></li>
+                <li><a class="nav" href="workouts.php">Workouts</a></li>
+                <li><a class="nav" href="data.php">Data</a></li>
+                <li><a href="login.php">Inloggen</a></li>
             </ul>
         </nav>
     </header>
+    <main>
+        
+    </main>
 </body>
 </html>

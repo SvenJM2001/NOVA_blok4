@@ -19,69 +19,71 @@
 </head>
 <body>
     <header>
+        <div><H1>Work<span>4</span>Me</H1></div>
+        <div><h2>Register</h2></div>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="workouts.php">Workouts</a></li>
-                <li><a href="data.php">Data</a></li>
+                <li><a class="nav" href="index.php">Home</a></li>
+                <li><a class="nav" href="workouts.php">Workouts</a></li>
+                <li><a class="nav" href="data.php">Data</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <h1>Register</h1>
         <form action="register_process.php" method="POST">
             <!-- User Information -->
-            <h2>User informatie</h2>
-            <label for="voornaam">Voornaam:</label>
-            <input type="text" id="voornaam" name="voornaam" required><br>
+            <div class="user_info">
+                <div class="User_title"><h2>User informatie</h2></div>
+                <div class="user_form">
+                    <input type="text" id="voornaam" name="voornaam" placeholder="Voornaam" required>
 
-            <label for="achternaam">Achternaam:</label>
-            <input type="text" id="achternaam" name="achternaam" required><br>
+                    <input type="text" id="achternaam" name="achternaam" placeholder="Achternaam" required>
 
-            <label for="geslacht">Geslacht:</label>
-            <select id="geslacht" name="geslacht" required>
-                <option value="man">Man</option>
-                <option value="vrouw">Vrouw</option>
-            </select><br>
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+                    <input type="text" id="gebruikersnaam" placeholder="Username" name="gebruikersnaam" required>
 
-            <label for="gebruikersnaam">Username:</label>
-            <input type="text" id="gebruikersnaam" name="gebruikersnaam" required><br>
+                    <input type="password" id="wachtwoord" placeholder="Wachtwoord" name="wachtwoord" required>
 
-            <label for="wachtwoord">Wachtwoord:</label>
-            <input type="password" id="wachtwoord" name="wachtwoord" required><br>
+                    <div>
+                        <label for="geslacht">Geslacht:</label>
+                        <select id="geslacht" name="geslacht" required>
+                            <option value="man">Man</option>
+                            <option value="vrouw">Vrouw</option>
+                        </select>
+                    </div>
 
-            <label for="rol">Rol:</label>
-            <select id="rol" name="rol" onchange="toggleEmployeeInfo()" required>
-                <option value="klant">klant</option>
-                <option value="werknemer">werknemer</option>
-            </select><br>
+                    <div>
+                        <label for="rol">Rol:</label>
+                        <select id="rol" name="rol" onchange="toggleEmployeeInfo()" required>
+                            <option value="klant">klant</option>
+                            <option value="werknemer">werknemer</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
             <!-- Address Information -->
-            <h2>Address informatie</h2>
-            <label for="straat">Straat:</label>
-            <input type="text" id="straat" name="straat" required><br>
+            <div class="adress_info">
+                <div class="adress_title"><h2>Address informatie</h2></div>
+                <div class="adress_form">
+                    <input type="text" id="straat" name="straat" placeholder="Straat" required><br>
 
-            <label for="huisnummer">Huis nummer:</label>
-            <input type="text" id="huisnummer" name="huisnummer" required><br>
+                    <input type="text" id="huisnummer" name="huisnummer" placeholder="Huisnummer" required><br>
 
-            <label for="postcode">Postcode:</label>
-            <input type="text" id="postcode" name="postcode" required><br>
+                    <input type="text" id="postcode" name="postcode" placeholder="Postcode" required><br>
 
-            <label for="plaats">Plaats:</label>
-            <input type="text" id="plaats" name="plaats" required><br>
+                    <input type="text" id="plaats" name="plaats" placeholder="Stad of Plaats" required><br>
 
-            <label for="land">Land:</label>
-            <input type="text" id="land" name="land" required><br>
+                    <input type="text" id="land" name="land" placeholder="Land" required><br>
 
-            <label for="telefoonnummer">Telefoonnummer:</label>
-            <input type="text" id="telefoonnummer" name="telefoonnummer"><br>
+                    <input type="text" id="telefoonnummer" name="telefoonnummer" placeholder="Telefoonnummer"><br>
 
-            <label for="mobielnummer">Mobielnummer:</label>
-            <input type="text" id="mobielnummer" name="mobielnummer"><br>
+                    <input type="text" id="mobielnummer" name="mobielnummer" placeholder="Mobielnummer"><br>
+                </div>
+            </div>
+            
 
             <!-- Employee Information -->
             <div id="Werknemer-info" style="display: none;">
@@ -90,8 +92,12 @@
                 <input type="text" id="werk_titel" name="werk_titel"><br>
             </div>
 
-            <button type="submit">Registreer</button>
+            
+            <button class="register_submit" type="submit">Registreer</button>
         </form>
+        <button class="next">Volgende stap</button>
+        <button class="back">Terug</button>
     </main>
+    <script src="scripts.js"></script>
 </body>
 </html>
