@@ -5,28 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work4Me registreer forum</title>
     <link rel="stylesheet" href="stylesheet.css">
-    <script>
-        function toggleEmployeeInfo() {
-            const roleSelect = document.getElementById("rol");
-            const employeeInfo = document.getElementById("Werknemer-info");
-            if (roleSelect.value === "werknemer") {
-                employeeInfo.style.display = "block";
-            } else {
-                employeeInfo.style.display = "none";
-            }
-        }
-    </script>
 </head>
 <body>
     <header>
         <div><H1>Work<span>4</span>Me</H1></div>
         <div><h2>Register</h2></div>
         <nav>
+            <label id="minutes">00</label>:<label id="seconds">00</label>
             <ul>
                 <li><a class="nav" href="index.php">Home</a></li>
                 <li><a class="nav" href="workouts.php">Workouts</a></li>
                 <li><a class="nav" href="data.php">Data</a></li>
             </ul>
+            <div class="dropdown">
+                <button class="dropdown_button">Mijn account</button>
+                <ul class="dropdown_content">
+                    <li><a href="#">Mijn gegevens</a></li>
+                    <li><a href="login.php">Inloggen</a></li>
+                    <li><a href="#">Uitloggen</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -34,7 +32,7 @@
         <form action="register_process.php" method="POST">
             <!-- User Information -->
             <div class="user_info">
-                <div class="User_title"><h2>User informatie</h2></div>
+                <div class="user_title"><h2>User informatie</h2></div>
                 <div class="user_form">
                     <input type="text" id="voornaam" name="voornaam" placeholder="Voornaam" required>
 
@@ -53,7 +51,6 @@
                             <option value="vrouw">Vrouw</option>
                         </select>
                     </div>
-
                     <div>
                         <label for="rol">Rol:</label>
                         <select id="rol" name="rol" onchange="toggleEmployeeInfo()" required>
