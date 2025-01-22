@@ -1,5 +1,6 @@
 <?php
-include "connection.php"
+include "connection.php";
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +20,17 @@ include "connection.php"
                 <li><a class="nav" href="#">Home</a></li>
                 <li><a class="nav" href="workouts.php">Workouts</a></li>
                 <li><a class="nav" href="data.php">Data</a></li>
+                <?php
+                if(isset($_SESSION['gebruikersnaam'])){
+                ?>
+                <li><a href="profiel.php"><?php echo $_SESSION['gebruikersnaam'] ?></a></li>
+                <?php
+                } else {
+                ?>
+                <li><a href="login.php">Inloggen</a></li>
+                <?php
+                }
+                ?>
             </ul>
             <div class="dropdown">
                 <button class="dropdown_button">Mijn account</button>
