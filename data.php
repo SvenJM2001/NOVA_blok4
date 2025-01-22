@@ -55,8 +55,8 @@
                                     <td>
                                         <?= htmlspecialchars($row['straat'] . ' ' . $row['huisnummer'] . ', ' . $row['postcode'] . ', ' . $row['plaats'] . ', ' . $row['land']) ?>
                                     </td>
-                                    <td><?= htmlspecialchars($row['telefoonnummer']) ?></td>
-                                    <td><?= htmlspecialchars($row['mobielnummer']) ?></td>
+                                    <td>0<?= htmlspecialchars($row['telefoonnummer']) ?></td>
+                                    <td>0<?= htmlspecialchars($row['mobielnummer']) ?></td>
                                     <td><?= htmlspecialchars($row['klantnummer'] ?? 'N/A') ?></td>
                                     <td><?= htmlspecialchars($row['Laatste_login_datum'] ?? 'N/A') ?></td>
                                     <td><?= htmlspecialchars($row['start_datum'] ?? 'N/A') ?></td>

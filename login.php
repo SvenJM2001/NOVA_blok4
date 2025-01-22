@@ -15,11 +15,11 @@
     <main>
         <section>
             <div class="inloggen">
-                <input class="login_box" type="text" id="gebruikersnaam" name="gebruikersnaam" placeholder="Username" required>
-                <input class="login_box" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" required>
-                <input type="checkbox" id="ingelogd_blijven" name="ingelogd_blijven"> 
-                <label for="ingelogd_blijven">Blijf ingelogd</label>
-                <button class="login_button">Inloggen</button>
+                <form action="login_process.php" method="POST">
+                    <input class="login_box" type="text" id="gebruikersnaam" name="gebruikersnaam" placeholder="Username" required>
+                    <input class="login_box" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" required>
+                    <button type="submit" class="login_button">Inloggen</button>
+                </form>
                 <p class="or">Or</p>
                 <p>Ik ben nieuw bij Work4Me. <a class="register" href="register.php">Maak een account aan</a></p>
             </div>
