@@ -11,12 +11,20 @@
     <header>
         <div><H1>Work<span>4</span>Me</H1></div>
         <nav>
+            <label id="minutes">00</label>:<label id="seconds">00</label>
             <ul>
                 <li><a class="nav" href="index.php">Home</a></li>
                 <li><a class="nav" href="workouts.php">Workouts</a></li>
                 <li><a class="nav" href="#">Data</a></li>
-                <li><a href="login.php">Inloggen</a></li>
             </ul>
+            <div class="dropdown">
+                <button class="dropdown_button">Mijn account</button>
+                <ul class="dropdown_content">
+                    <li><a href="#">Mijn gegevens</a></li>
+                    <li><a href="login.php">Inloggen</a></li>
+                    <li><a href="#">Uitloggen</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -70,18 +78,55 @@
                 <?php endif; ?>
             </div>
         </section>
-        <section>
+        <section class="tabellen">
             <div class="user_login_data">
                 <canvas id="loginDataChart" style="width:100%; max-width:700px"></canvas>
                 <script>
-                    const loginDataChart = new Chart("loginDataChart", {
-                        type: "bar",
-                        data: {},
+                    const loginXValues = ["Januarie","Februarie","Maart","April","Mei","Juni","Julie","Augustus","September","Oktober","November","December"];
+                    var loginYValues = [50,26,47,53,35,46,19,23,28,43,52,22];
+                    var loginDataChart 
+                    loginDataChart = new Chart("loginDataChart", {
+                        type: "line",
+                        data: {
+                            labels: loginXValues,
+                            datasets: [{
+                                backgroundColor: "rgb(0, 109, 199, 1.0)",
+                                borderColor: "rgb(0, 109, 199, 0.5)",
+                                data: loginYValues,
+                                fill: false
+                            }]
+                        },
                         options: {}
+                    });
+                </script>
+            </div>
+            <div class="user_location_data">
+                <canvas id="locationDataChart" style="width:100%; max-width:700px"></canvas>
+                <script>
+                    const locationXvalues = ["Haarlem","Rotterdam","Amsterdam","Alkmaar","Ijmuiden","Hoofddorp"];
+                    const barColors = ["red","green","pink","blue","yellow","purple"];
+                    var locationYValues = [25,15,30,12,10,16];
+                    var locationDataChart
+                    locationDataChart = new Chart ("locationDataChart", {
+                        type: "pie",
+                        data: {
+                            labels: locationXvalues,
+                            datasets: [{
+                                backgroundColor: barColors,
+                                data: locationYValues
+                            }]
+                        },
+                        options: {
+                            title: { 
+                                display: true,
+                                text: "Locatie van gebruikers"
+                            }
+                        }
                     });
                 </script>
             </div>
         </section>
     </main>
+    <script src="scripts.js"></script>
 </body>
 </html>
