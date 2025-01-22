@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+}
+
+header.fixed {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: linear-gradient(to bottom right, rgb(162, 200, 231), rgb(0, 109, 199));
+    height: fit-content;
+    position: fixed;
+    height: 50%;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}  
+header div {
+    display: flex;
+    align-items: center;
+}
+.pagina_titel {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10em;
+}
+header div h1 {
+    margin-left: 1em;
+    color: white;
+}
+span {
+    color: rgb(0, 109, 199);
+}
+header div h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2em;
+    margin: 0;
+}
+.inloggen{
+    height: 20em;
+    width: 25em;
+    padding: 1em;
+    margin-top: 10em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    z-index: 11;
+    background-color: white;
+}
+.login_box {
+    margin-bottom: 0.5em;
+    height: 5em;
+    width: 22em;
+    font-size: large;
+    padding-left: 0.5em;
+    border-style: none;
+    background-color: rgb(240, 240, 240);
+}
+.login_button {
+    height: 3em;
+    width: 15em;
+    margin: 0.5em 3em;
+    font-size: large;
+}
+p {
+    margin-top: 0;
+    width: 23em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.naar_register {
+    color: rgb(0, 109, 199);
+}
+.terug_knop {
+    width: 5em;
+    height: 2em;
+}
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    text-decoration: none;
+}

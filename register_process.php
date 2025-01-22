@@ -65,3 +65,4 @@ $conn->close();
 // Redirect to the index page
 header("Location: index.php");
 exit();
+?>

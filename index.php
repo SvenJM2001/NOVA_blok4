@@ -24,29 +24,17 @@ include "connection.php"
                 <button class="dropdown_button">Mijn account</button>
                 <ul class="dropdown_content">
                     <li><a href="#">Mijn gegevens</a></li>
-                    <li><a href="login.php">Inloggen</a></li>
-                    <li><button class="uitloggen">loguit</button></li>
+                    <li><button id="login_button" onclick="window.location.href = 'login.php';">Login</button></li>
+                    <li><button id="loguit_button" onclick="window.location.href = 'loguit.php';">Log uit</button></li>
                 </ul>
             </div>
         </nav>
     </header>
     <main>
-        <section class="loguit_veld">
-            <button class="loguit_weg">terug</button>
-            <div class="loguit">
-                <button class="loguit_button">log uit</button>
-                <div class="zekerheids_check">
-                    <p>weet u zeker dat u wilt uitloggen?</p>
-                    <button class="niet_zeker">Nee</button>
-                    <button class="wel_zeker">Ja</button>
-                </div>
-            </div>
-        </section>
-    
         <div class="banner">
             <div>
                 <h2>Word nu lid</h2>
-                <button class="register"><a href="register.php">Lid Worden</a></button>
+                <button class="register" onclick="window.location.href = 'register.php';">Lid Worden</button>
             </div>
         </div>
         

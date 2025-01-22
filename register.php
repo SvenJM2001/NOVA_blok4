@@ -50,10 +50,8 @@
                             <option value="man">Man</option>
                             <option value="vrouw">Vrouw</option>
                         </select>
-                    </div>
-                    <div>
                         <label for="rol">Rol:</label>
-                        <select id="rol" name="rol" onchange="toggleEmployeeInfo()" required>
+                        <select id="rol" name="rol" required>
                             <option value="klant">klant</option>
                             <option value="werknemer">werknemer</option>
                         </select>
@@ -83,10 +81,9 @@
             
 
             <!-- Employee Information -->
-            <div id="Werknemer-info" style="display: none;">
+            <div id="werknemer-info">
                 <h2>Werknemer informatie</h2>
-                <label for="werk_titel">Werk titel:</label>
-                <input type="text" id="werk_titel" name="werk_titel"><br>
+                <input type="text" id="werk_titel" name="werk_titel" placeholder="werk titel"><br>
             </div>
 
             

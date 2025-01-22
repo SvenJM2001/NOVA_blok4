@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Haal de ingevoerde gegevens op
     $gebruikersnaam = $_POST['gebruikersnaam'];
     $wachtwoord = $_POST['wachtwoord'];
-   
+
     // Zoek naar de gebruiker in de database
     $sql = "SELECT id, gebruikersnaam, wachtwoord FROM users WHERE gebruikersnaam = ?";
     $stmt = $conn->prepare($sql);
@@ -32,29 +32,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['id'] = $row['id'];
 
             // Update de laatste inlogdatum in de klanten tabel
-            $currentDateTime = date('Y-m-d H:i:s'); // Huidige datum en tijd
-            $updateSql = "UPDATE klanten SET laatste_inlog_datum = ? WHERE user_id = ?";
+            $laatste_login_datum = date('Y-m-d H:i:s'); // Huidige datum en tijd
+
+            // SQL-query voor het bijwerken van de laatste inlogdatum
+            $updateSql = "UPDATE klanten SET laatste_login_datum = ? WHERE user_id = ?";
             $updateStmt = $conn->prepare($updateSql);
             
             if ($updateStmt === false) {
                 die('Error in prepare statement for update: ' . $conn->error);
             }
 
-            $updateStmt->bind_param('si', $currentDateTime, $row['id']);
+            // Bind de parameters (de datum en de gebruikers-ID)
+            $updateStmt->bind_param('si', $laatste_login_datum, $row['id']);
             $updateSuccess = $updateStmt->execute();
             
             if (!$updateSuccess) {
                 die('Error in executing update: ' . $updateStmt->error);
+            } else {
+                echo "update success";
             }
+        } else {
+            echo "onjuist wachtwoord";
         }
 
         // Redirect naar de homepagina of een andere pagina
         header("Location: index.php");
         exit();
     } else {
-        echo "Onjuist wachtwoord!";
+        echo "Gebruiker niet gevonden!";
     }
-} else {
-    echo "Gebruiker niet gevonden!";
 }
 ?>

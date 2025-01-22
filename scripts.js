@@ -2,7 +2,30 @@
 var minutesLabel = document.getElementById("minutes");
 var secondsLabel = document.getElementById("seconds");
 var totalSeconds = 0;
-setInterval(setTime, 1000);
+const employeeInfo = document.getElementById("werknemer-info");
+const rolElement = document.getElementById("rol");
+
+window.onload = checkSessionStatus;
+
+function checkSessionStatus() {
+    fetch('sessie_status.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.loggedIn) {
+                // Als de gebruiker ingelogd is, verberg de login-knop en toon de logout-knop
+                document.getElementById('login-button').style.display = 'none';
+                document.getElementById('logout-button').style.display = 'block';
+                console.log ("ingelogd")
+            } else {
+                // Als de gebruiker niet ingelogd is, verberg de logout-knop en toon de login-knop
+                document.getElementById('login-button').style.display = 'block';
+                document.getElementById('logout-button').style.display = 'none';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching session status:', error);
+        });
+}
 
 function setTime() {
   ++totalSeconds;
@@ -22,14 +45,16 @@ function pad(val) {
 
 
 function toggleEmployeeInfo() {
-    const roleSelect = document.getElementById(".rol");
-    const employeeInfo = document.getElementById(".werknemer-info");
-    if (roleSelect.value === "werknemer") {
-        employeeInfo.style.display = "block";
+    console.log ("wordt aangeroepen")
+    let rolValue = rolElement.value;
+    console.log (rolValue)
+    if (rolValue === "werknemer") {
+        employeeInfo.style.display = "flex";
     } else {
         employeeInfo.style.display = "none";
     }
 }
+
 
 function adressInfoOnScreen(){
     document.querySelector(".user_info").style.display = "none";
@@ -49,13 +74,6 @@ function userInfoOnScreen(){
     console.log ("werkt"); 
 }
 
-function logoutOnScreen(){
-    document.querySelector(".loguit_veld").style.display = "block";
-}
-function logoutOffScreen(){
-    document.querySelector(".loguit_veld").style.display = "none";
-}
-
 function zekerheidsCheckOnScreen(){
     document.querySelector(".loguit_button").style.display = "none";
     document.querySelector(".zekerheids_check").style.display = "flex";
@@ -66,9 +84,13 @@ function zekerheidsCheckOffScreen(){
     document.querySelector(".zekerheids_check").style.display = "none";
 }
 
-document.querySelector(".uitloggen").addEventListener("click",logoutOnScreen);
-document.querySelector(".loguit_weg").addEventListener("click",logoutOffScreen);
-document.querySelector(".loguit_button").addEventListener("click", zekerheidsCheckOnScreen);
-document.querySelector(".niet_zeker").addEventListener("click", zekerheidsCheckOffScreen);
+setInterval(setTime, 1000);
+
+document.getElementById("rol").addEventListener("change", toggleEmployeeInfo);
+
 document.querySelector(".next").addEventListener("click", adressInfoOnScreen);
 document.querySelector(".back").addEventListener("click", userInfoOnScreen);
+document.querySelector(".loguit_button").addEventListener("click", zekerheidsCheckOnScreen);
+document.querySelector(".niet_zeker").addEventListener("click", zekerheidsCheckOffScreen);
+
+
