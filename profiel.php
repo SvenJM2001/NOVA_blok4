@@ -34,7 +34,7 @@ session_start();
         </nav>
     </header>
     <main>
-      <form action="logout.php" method="post">
+      <form action="loguit.php" method="post">
           <button type="submit">Uitloggen</button>
       </form>
     </main>

@@ -8,9 +8,8 @@
 </head>
 <body>
     <header class="fixed">
-        <div><H1>Work<span>4</span>Me</H1></div>
+        <a href="index.php"><div><H1>Work<span>4</span>Me</H1></div></a>
         <div class="pagina_titel"><H2>UITLOGGEN</H2></div>
-        <div><button class="terug_knop"><a href="index.php">back</a></button></div>
         <label id="minutes">00</label>:<label id="seconds">00</label>
     </header>
     <main>

@@ -74,15 +74,28 @@ function userInfoOnScreen(){
     console.log ("werkt"); 
 }
 
-function zekerheidsCheckOnScreen(){
-    document.querySelector(".loguit_button").style.display = "none";
-    document.querySelector(".zekerheids_check").style.display = "flex";
-}
+document.addEventListener("DOMContentLoaded", () => {
+    // Get required elements
+    const loguitButton = document.querySelector(".loguit_button");
+    const zekerheidsCheck = document.querySelector(".zekerheids_check");
+    const nietZekerButton = document.querySelector(".niet_zeker");
 
-function zekerheidsCheckOffScreen(){
-    document.querySelector(".loguit_button").style.display = "block";
-    document.querySelector(".zekerheids_check").style.display = "none";
-}
+    // Check if elements exist
+    if (!loguitButton || !zekerheidsCheck || !nietZekerButton) {
+        console.error("One or more elements (.loguit_button, .zekerheids_check, .niet_zeker) are missing in the DOM.");
+        return;
+    }
+
+    loguitButton.addEventListener("click", () => {
+        loguitButton.style.display = "none";
+        zekerheidsCheck.style.display = "flex";
+    });
+
+    nietZekerButton.addEventListener("click", () => {
+        loguitButton.style.display = "block";
+        zekerheidsCheck.style.display = "none";
+    });
+});
 
 setInterval(setTime, 1000);
 
