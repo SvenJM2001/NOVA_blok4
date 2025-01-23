@@ -5,28 +5,6 @@ var totalSeconds = 0;
 const employeeInfo = document.getElementById("werknemer-info");
 const rolElement = document.getElementById("rol");
 
-window.onload = checkSessionStatus;
-
-function checkSessionStatus() {
-    fetch('sessie_status.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.loggedIn) {
-                // Als de gebruiker ingelogd is, verberg de login-knop en toon de logout-knop
-                document.getElementById('login-button').style.display = 'none';
-                document.getElementById('logout-button').style.display = 'block';
-                console.log ("ingelogd")
-            } else {
-                // Als de gebruiker niet ingelogd is, verberg de logout-knop en toon de login-knop
-                document.getElementById('login-button').style.display = 'block';
-                document.getElementById('logout-button').style.display = 'none';
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching session status:', error);
-        });
-}
-
 function setTime() {
   ++totalSeconds;
   secondsLabel.innerHTML = pad(totalSeconds % 60);
