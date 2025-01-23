@@ -33,8 +33,8 @@
                         $totalUsers++;
 
                         // Track logins by month
-                        if (!empty($row['Laatste_login_datum'])) {
-                            $loginMonth = (int)date('n', strtotime($row['Laatste_login_datum']));
+                        if (!empty($row['laatste_login_datum'])) {
+                            $loginMonth = (int)date('n', strtotime($row['laatste_login_datum']));
                             $loginMonths[$loginMonth]++;
                         }
 
@@ -49,7 +49,7 @@
                         $tableRows .= '<td>0' . htmlspecialchars($row['telefoonnummer']) . '</td>';
                         $tableRows .= '<td>0' . htmlspecialchars($row['mobielnummer']) . '</td>';
                         $tableRows .= '<td>' . htmlspecialchars($row['klantnummer'] ?? 'N/A') . '</td>';
-                        $tableRows .= '<td>' . htmlspecialchars($row['Laatste_login_datum'] ?? 'N/A') . '</td>';
+                        $tableRows .= '<td>' . htmlspecialchars($row['laatste_login_datum'] ?? 'N/A') . '</td>';
                         $tableRows .= '<td>' . htmlspecialchars($row['start_datum'] ?? 'N/A') . '</td>';
                         $tableRows .= '<td>' . htmlspecialchars($row['werk_titel'] ?? 'N/A') . '</td>';
                         $tableRows .= '</tr>';

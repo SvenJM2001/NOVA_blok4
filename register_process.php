@@ -48,7 +48,7 @@ $conn->query($sql_adres);
 
 // Insert into `klanten` table if the role is "klant"
 if ($rol === 'klant') {
-    $sql_klanten = "INSERT INTO klanten (user_id, klantnummer, Laatste_login_datum)
+    $sql_klanten = "INSERT INTO klanten (user_id, klantnummer, laatste_login_datum)
     VALUES ('$user_id', '$klantnummer', '$laatste_login_datum')";
     $conn->query($sql_klanten);
 }
