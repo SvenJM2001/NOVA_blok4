@@ -18,7 +18,55 @@
                 <?php
                 include 'get_users.php';
 
-                if ($result->num_rows > 0): ?>
+                $cities = [];
+                $totalUsers = 0;
+                $loginMonths = array_fill(1, 12, 0); // Array to track logins per month
+
+                $tableRows = ''; // Store table rows as a string
+
+                // Process the rows to collect city counts and generate table rows
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        // Count the cities
+                        $city = $row['plaats'];
+                        $cities[$city] = ($cities[$city] ?? 0) + 1;
+                        $totalUsers++;
+
+                        // Track logins by month
+                        if (!empty($row['Laatste_login_datum'])) {
+                            $loginMonth = (int)date('n', strtotime($row['Laatste_login_datum']));
+                            $loginMonths[$loginMonth]++;
+                        }
+
+                        // Generate table rows
+                        $tableRows .= '<tr>';
+                        $tableRows .= '<td>' . htmlspecialchars($row['voornaam'] . ' ' . $row['achternaam']) . '</td>';
+                        $tableRows .= '<td>' . htmlspecialchars($row['geslacht']) . '</td>';
+                        $tableRows .= '<td>' . htmlspecialchars($row['email']) . '</td>';
+                        $tableRows .= '<td>' . htmlspecialchars($row['gebruikersnaam']) . '</td>';
+                        $tableRows .= '<td>' . htmlspecialchars($row['rol']) . '</td>';
+                        $tableRows .= '<td>' . htmlspecialchars($row['straat'] . ' ' . $row['huisnummer'] . ', ' . $row['postcode'] . ', ' . $row['plaats'] . ', ' . $row['land']) . '</td>';
+                        $tableRows .= '<td>0' . htmlspecialchars($row['telefoonnummer']) . '</td>';
+                        $tableRows .= '<td>0' . htmlspecialchars($row['mobielnummer']) . '</td>';
+                        $tableRows .= '<td>' . htmlspecialchars($row['klantnummer'] ?? 'N/A') . '</td>';
+                        $tableRows .= '<td>' . htmlspecialchars($row['Laatste_login_datum'] ?? 'N/A') . '</td>';
+                        $tableRows .= '<td>' . htmlspecialchars($row['start_datum'] ?? 'N/A') . '</td>';
+                        $tableRows .= '<td>' . htmlspecialchars($row['werk_titel'] ?? 'N/A') . '</td>';
+                        $tableRows .= '</tr>';
+                    }
+
+                    // Convert cities and their percentages to JSON
+                    $cityLabels = json_encode(array_keys($cities));
+                    $cityPercentages = json_encode(array_map(function($count) use ($totalUsers) {
+                        return round(($count / $totalUsers) * 100, 2);
+                    }, array_values($cities)));
+
+                    // Convert login months data to JSON
+                    $loginData = json_encode(array_values($loginMonths));
+                }
+                ?>
+
+                <?php if ($result->num_rows > 0): ?>
                     <table>
                         <thead>
                             <tr>
@@ -37,24 +85,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while ($row = $result->fetch_assoc()): ?>
-                                <tr>
-                                    <td><?= htmlspecialchars($row['voornaam'] . ' ' . $row['achternaam']) ?></td>
-                                    <td><?= htmlspecialchars($row['geslacht']) ?></td>
-                                    <td><?= htmlspecialchars($row['email']) ?></td>
-                                    <td><?= htmlspecialchars($row['gebruikersnaam']) ?></td>
-                                    <td><?= htmlspecialchars($row['rol']) ?></td>
-                                    <td>
-                                        <?= htmlspecialchars($row['straat'] . ' ' . $row['huisnummer'] . ', ' . $row['postcode'] . ', ' . $row['plaats'] . ', ' . $row['land']) ?>
-                                    </td>
-                                    <td>0<?= htmlspecialchars($row['telefoonnummer']) ?></td>
-                                    <td>0<?= htmlspecialchars($row['mobielnummer']) ?></td>
-                                    <td><?= htmlspecialchars($row['klantnummer'] ?? 'N/A') ?></td>
-                                    <td><?= htmlspecialchars($row['Laatste_login_datum'] ?? 'N/A') ?></td>
-                                    <td><?= htmlspecialchars($row['start_datum'] ?? 'N/A') ?></td>
-                                    <td><?= htmlspecialchars($row['werk_titel'] ?? 'N/A') ?></td>
-                                </tr>
-                            <?php endwhile; ?>
+                            <?= $tableRows ?>
                         </tbody>
                     </table>
                 <?php else: ?>
@@ -66,8 +97,8 @@
             <div class="user_login_data">
                 <canvas id="loginDataChart" style="width:100%; max-width:700px"></canvas>
                 <script>
-                    const loginXValues = ["Januarie","Februarie","Maart","April","Mei","Juni","Julie","Augustus","September","Oktober","November","December"];
-                    var loginYValues = [50,26,47,53,35,46,19,23,28,43,52,22];
+                    const loginXValues = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
+                    const loginYValues = <?= $loginData ?>;
                     var loginDataChart 
                     loginDataChart = new Chart("loginDataChart", {
                         type: "line",
@@ -80,30 +111,37 @@
                                 fill: false
                             }]
                         },
-                        options: {}
+                        options: {
+                            title: {
+                                display: true,
+                                text: "Logins per Month"
+                            }
+                        }
                     });
                 </script>
             </div>
             <div class="user_location_data">
                 <canvas id="locationDataChart" style="width:100%; max-width:700px"></canvas>
                 <script>
-                    const locationXvalues = ["Haarlem","Rotterdam","Amsterdam","Alkmaar","Ijmuiden","Hoofddorp"];
-                    const barColors = ["red","green","pink","blue","yellow","purple"];
-                    var locationYValues = [25,15,30,12,10,16];
-                    var locationDataChart
-                    locationDataChart = new Chart ("locationDataChart", {
+                    // Get data from PHP
+                    const locationXValues = <?= $cityLabels ?>;
+                    const locationYValues = <?= $cityPercentages ?>;
+                    const barColors = ["red", "green", "pink", "blue", "yellow", "purple", "orange", "gray"];
+
+                    // Create the pie chart
+                    new Chart("locationDataChart", {
                         type: "pie",
                         data: {
-                            labels: locationXvalues,
+                            labels: locationXValues,
                             datasets: [{
-                                backgroundColor: barColors,
+                                backgroundColor: barColors.slice(0, locationXValues.length),
                                 data: locationYValues
                             }]
                         },
                         options: {
-                            title: { 
+                            title: {
                                 display: true,
-                                text: "Locatie van gebruikers"
+                                text: "Percentage of Users by Location"
                             }
                         }
                     });
