@@ -8,25 +8,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" type="text/javascript"></script>
 </head>
 <body>
-    <header>
-        <div><H1>Work<span>4</span>Me</H1></div>
-        <nav>
-            <label id="minutes">00</label>:<label id="seconds">00</label>
-            <ul>
-                <li><a class="nav" href="index.php">Home</a></li>
-                <li><a class="nav" href="workouts.php">Workouts</a></li>
-                <li><a class="nav" href="#">Data</a></li>
-            </ul>
-            <div class="dropdown">
-                <button class="dropdown_button">Mijn account</button>
-                <ul class="dropdown_content">
-                    <li><a href="#">Mijn gegevens</a></li>
-                    <li><a href="login.php">Inloggen</a></li>
-                    <li><a href="#">Uitloggen</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <?php
+    include 'header.php';
+    ?>
 
     <main>
         <section>
