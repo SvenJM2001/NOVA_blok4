@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $wachtwoord = $_POST['wachtwoord'];
 
     // Zoek naar de gebruiker in de database
-    $sql = "SELECT id, gebruikersnaam, wachtwoord FROM users WHERE gebruikersnaam = ?";
+    $sql = "SELECT id, gebruikersnaam, wachtwoord, rol FROM users WHERE gebruikersnaam = ?";
     $stmt = $conn->prepare($sql);
     
     if ($stmt === false) {
@@ -30,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Zet de sessiegegevens
             $_SESSION['gebruikersnaam'] = $gebruikersnaam;
             $_SESSION['id'] = $row['id'];
+            $_SESSION['rol'] = $row['rol'];
+
 
             // Update de laatste inlogdatum in de klanten tabel
             $laatste_login_datum = date('Y-m-d H:i:s'); // Huidige datum en tijd

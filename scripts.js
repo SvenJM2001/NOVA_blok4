@@ -23,9 +23,7 @@ function pad(val) {
 
 
 function toggleEmployeeInfo() {
-    console.log ("wordt aangeroepen")
     let rolValue = rolElement.value;
-    console.log (rolValue)
     if (rolValue === "werknemer") {
         employeeInfo.style.display = "flex";
     } else {
@@ -40,7 +38,7 @@ function adressInfoOnScreen(){
     document.querySelector(".register_submit").style.display = "block";
     document.querySelector(".next").style.display = "none";
     document.querySelector(".back").style.display = "block";
-    console.log ("werkt"); 
+    employeeInfo.style.display = "none";
 }
 
 function userInfoOnScreen(){
@@ -49,7 +47,11 @@ function userInfoOnScreen(){
     document.querySelector(".register_submit").style.display = "none";
     document.querySelector(".back").style.display = "none";
     document.querySelector(".next").style.display = "block";
-    console.log ("werkt"); 
+    if (rolValue === "werknemer") {
+        employeeInfo.style.display = "flex";
+    } else {
+        employeeInfo.style.display = "none";
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

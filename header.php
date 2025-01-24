@@ -24,7 +24,7 @@ session_start();
             ?>
           </button>
           <ul class="dropdown_content">
-            <li><a href="#">Mijn gegevens</a></li>
+            <li><a href="profiel.php">Mijn gegevens</a></li>
             <?php
               if(isset($_SESSION['gebruikersnaam'])){
             ?>
