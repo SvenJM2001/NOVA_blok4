@@ -3,13 +3,10 @@ var minutesLabel = document.getElementById("minutes");
 var secondsLabel = document.getElementById("seconds");
 var totalSeconds = 0;
 const employeeInfo = document.getElementById("werknemer-info");
-const rolElement = document.getElementById("rol");
-
-function setTime() {
-  ++totalSeconds;
-  secondsLabel.innerHTML = pad(totalSeconds % 60);
-  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-}
+const rolElement = document.getElementById("rol");  
+let minutes = 0;
+let seconds = 0;
+let timer;
 
 function pad(val) {
   var valString = val + "";
@@ -77,8 +74,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-setInterval(setTime, 1000);
 
+function checkLoginStatus() {
+    fetch('sessie_status.php')
+      .then(response => response.json())
+      .then(data => {
+        if (data.loggedIn) {
+          startTimer();  // Start the timer if the user is logged in
+        }
+      })
+      .catch(error => console.error('Error checking login status:', error));
+  }
+  
+  
+  // Function to start the timer
+  function startTimer() {
+    let timeElapsed = localStorage.getItem('timeElapsed') || 0; // Retrieve stored time or start from 0
+  
+    // Update the timer every second
+    timer = setInterval(() => {
+      timeElapsed++;
+      minutes = Math.floor(timeElapsed / 60);
+      seconds = timeElapsed % 60;
+      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+      localStorage.setItem('timeElapsed', timeElapsed); // Save the time to localStorage
+    }, 1000);
+  }
+  
+  // Function to handle user logout
+  function logout() {
+    localStorage.removeItem('timeElapsed'); // Clear the timer on logout
+    fetch('loguit.php')  // Log the user out by calling the logout script
+      .then(response => window.location.href = 'index.php'); // Redirect after logout
+  }
+  
+  // Call checkLoginStatus when the page loads to check if the user is logged in
+  
+  // Handle logout button click
+  const logoutButton = document.querySelector('.wel_zeker');
+  if (logoutButton) {
+    logoutButton.addEventListener('click', logout);
+  }
+
+
+document.addEventListener('DOMContentLoaded', checkLoginStatus);
 document.getElementById("rol").addEventListener("change", toggleEmployeeInfo);
 
 document.querySelector(".next").addEventListener("click", adressInfoOnScreen);

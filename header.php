@@ -1,5 +1,27 @@
 <?php
 session_start();
+include 'connection.php'; // Zorg ervoor dat je verbinding hebt met de database
+
+// Controleer of de gebruiker is ingelogd
+if (isset($_SESSION['gebruikersnaam'])) {
+    // Haal de rol van de ingelogde gebruiker op
+    $gebruikersnaam = $_SESSION['gebruikersnaam'];
+    $query = "SELECT rol FROM users WHERE gebruikersnaam = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $gebruikersnaam);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Als de gebruiker bestaat, haal de rol op
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $rol = $row['rol'];
+    } else {
+        $rol = '';
+    }
+} else {
+    $rol = '';
+}
 ?>
 <header>
   <a href="index.php"><div><H1>Work<span>4</span>Me</H1></div></a>
@@ -7,8 +29,11 @@ session_start();
     <label id="minutes">00</label>:<label id="seconds">00</label>
     <ul>
       <li><a class="nav" href="workouts.php">Workouts</a></li>
+      <?php if ($rol === 'werknemer') { ?>
+          <li><a class="nav" href="gebruikers.php">Users</a></li>
+      <?php } ?>
       <li><a class="nav" href="data.php">Data</a></li>
-      <li>
+      <li><a class="nav" href="over_ons.php">Over Ons</a></li>
         <div class="dropdown">
           <button class="dropdown_button">
             <?php

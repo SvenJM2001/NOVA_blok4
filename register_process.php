@@ -18,13 +18,11 @@ $land = $_POST['land'];
 $telefoonnummer = $_POST['telefoonnummer'];
 $mobielnummer = $_POST['mobielnummer'];
 
-// Prepare variables for optional inserts
 $klantnummer = null;
 $laatste_login_datum = null;
 $begin_datum = null;
 $baan_titel = null;
 
-// Handle role-specific data
 if ($rol === 'klant') {
     $klantnummer = substr(bin2hex(random_bytes(4)), 0, 8);
     $laatste_login_datum = date('Y-m-d H:i:s');
@@ -33,15 +31,12 @@ if ($rol === 'klant') {
     $baan_titel = $_POST['werk_titel'];
 }
 
-// Insert into `users` table
 $sql_users = "INSERT INTO users (voornaam, achternaam, geslacht, email, gebruikersnaam, wachtwoord, rol)
 VALUES ('$voornaam', '$achternaam', '$geslacht', '$email', '$gebruikersnaam', '$wachtwoord', '$rol')";
 $conn->query($sql_users);
 
-// Get the inserted user's ID
 $user_id = $conn->insert_id;
 
-// Insert into `adres` table
 $sql_adres = "INSERT INTO adres (user_id, straat, huisnummer, postcode, plaats, land, telefoonnummer, mobielnummer)
 VALUES ('$user_id', '$straat', '$huisnummer', '$postcode', '$plaats', '$land', '$telefoonnummer', '$mobielnummer')";
 $conn->query($sql_adres);

@@ -58,7 +58,7 @@ nav {
     height: 100%;
     padding: 1rem 0;
 }
-ul {
+nav ul {
     display: flex;
     justify-content: flex-end;
     list-style: none;
@@ -127,7 +127,9 @@ section {
 .dropdown:hover .dropdown_button > * {
     color: white;
 }
-
+#minutes {
+   padding-left: 2em;
+}
 
 
 /*index pagina*/
@@ -221,7 +223,7 @@ section {
     margin-top: 1em;
 }
 
-/* opmaak van de register pagina (zonder header)*/
+/* opmaak van de register pagina*/
 form {
     display: flex;
     flex-direction: column;
@@ -319,6 +321,10 @@ form input {
 }
 
 /* data opmaak */
+.data {
+    display: none;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -345,26 +351,33 @@ tbody tr:nth-child(even) {
 }
 .tabellen div {
     border-radius: 1em;
-    background-color: rgb(244, 244, 244);
+    background-color: white;
+    padding: 1em;
+    margin-bottom: 5em;
 }
 
 
 
-/*profiel pagina styling*/
+/*workout pagina styling*/
+.zoek_filter {
+    width: 100%;
+}
+.zoek_filter form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.zoek_filter button {
+    height: 3em;
+}
+.zoek_filter input {
+    height: 3em;
+}
+
 #workouts {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.info_display {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: 20em;
-    border: 0.1em solid rgb(138, 138, 138);
-    background-color: rgb(224, 223, 223);
-    margin-top: 2em;
 }
 
 .workout {
@@ -375,8 +388,8 @@ tbody tr:nth-child(even) {
     align-items: center;
     padding: 1em;
     border: 0.1em solid black;
-    width: 35em;
-    margin: 2em;
+    width: 38em;
+    margin: 1em;
     border-radius: 1em;
     background-color: white;
 }
@@ -397,6 +410,7 @@ tbody tr:nth-child(even) {
 .notities {
     font-size: small;
     margin-right: auto;
+    width: 100%;
 }
 
 .workout_form {
@@ -439,4 +453,101 @@ font-family: Arial, Helvetica, sans-serif;
     font-size: larger;
     margin-left: auto;
     margin-right: 2em;
+}
+
+/* profielen pagina's opmaak */
+.profiel_display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info_display {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 25em;
+    border: 0.2em solid rgb(0, 109, 199);
+    background-color: white;
+    margin-top: 2em;
+    border-radius: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.info_display h3 {
+    margin: 0 auto auto 0;
+    padding: 1em 2em 1em 2em;
+    border-bottom: 0.2em solid rgb(0, 109, 199);
+    border-right: 0.2em solid rgb(0, 109, 199);
+    border-bottom-right-radius: 1em;
+}
+.info_display div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 25em;
+}
+
+.info_display p {
+    display: block; 
+    margin: 0;   
+    margin: 1em;
+    margin-right: 3em;
+    width: 16em;
+}
+.profiel_loguit {
+    margin: 3em 0;
+    font-size: larger;
+    padding: 1em 2em;
+    width: 15em;
+    background-color: white;
+    color: rgb(0, 109, 199);
+    border: 0.2em solid rgb(0, 109, 199);
+}
+
+
+/*over ons*/
+.over_ons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.over {
+    display: block;
+    text-align: center;
+    margin-top: 2em;
+    width: 60%;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 2em;
+    border-bottom: 0.2em solid rgb(0, 109, 199);
+}
+
+.visie {
+    margin-top: 4em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50em;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 4em;
+}
+
+.waarom {
+    display: flex;
+    width: 40em;
+    border: 0.2em solid rgb(0, 109, 199);
+    background-color: white;
+    padding: 1em;
+    margin-left: 2em;
+    margin-top: 4em;
+}
+
+.waarom strong {
+    color: rgb(0, 109, 199);
+}
+
+.waarom p {
+    font-size: small;
 }

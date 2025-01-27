@@ -67,7 +67,7 @@
                 ?>
 
                 <?php if ($result->num_rows > 0): ?>
-                    <table>
+                    <table class="data">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -114,7 +114,7 @@
                         options: {
                             title: {
                                 display: true,
-                                text: "Logins per Month"
+                                text: "Logins per Maand"
                             }
                         }
                     });
@@ -141,7 +141,7 @@
                         options: {
                             title: {
                                 display: true,
-                                text: "Percentage of Users by Location"
+                                text: "Percentage van gebruikers per locatie"
                             }
                         }
                     });
